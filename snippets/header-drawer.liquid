@@ -1,0 +1,318 @@
+{% comment %}
+  Renders a header drawer menu for mobile and desktop.
+
+  Usage:
+  {% render 'header-drawer' %}
+{% endcomment %}
+
+<header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+    <summary
+      class="header__icon header__icon--menu header__icon--summary link focus-inset"
+      aria-label="{{ 'sections.header.menu' | t }}"
+    >
+      <span>
+        {% render 'icon-hamburger' %}
+        {% render 'icon-close' %}
+      </span>
+    </summary>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      <div class="menu-drawer__inner-container">
+        <div class="menu-drawer__navigation-container">
+          <nav class="menu-drawer__navigation">
+            <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+              {%- for link in section.settings.menu.links -%}
+                <li>
+                  {%- if link.links != blank -%}
+                    <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
+                      <summary
+                        id="HeaderDrawer-{{ link.handle }}"
+                        class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
+                      >
+                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="500.000000pt" height="500.000000pt" viewBox="0 0 500.000000 500.000000" preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+<path d="M3754 4986 c-169 -39 -374 -175 -530 -354 -51 -58 -64 -80 -64 -106 0 -40 12 -50 111 -100 119 -59 214 -162 207 -224 -10 -86 -221 -58 -385 51 -80 53 -104 57 -136 23 -88 -95 -393 -723 -414 -852 -7 -40 16 -64 108 -114 129 -71 243 -215 225 -285 -16 -65 -141 -84 -284 -45 -95 26 -116 26 -141 -6 -18 -23 -21 -40 -21 -138 0 -135 19 -227 65 -324 59 -126 178 -228 303 -261 27 -8 42 -17 42 -28 0 -8 -12 -71 -27 -139 l-27 -124 -261 0 c-143 0 -297 -3 -342 -6 -81 -7 -82 -7 -87 17 -2 13 -15 87 -29 164 l-24 140 62 60 c102 99 153 210 180 392 36 238 -1 596 -97 942 -42 155 -78 190 -142 140 -33 -26 -33 -44 4 -176 115 -409 140 -778 69 -1007 -18 -61 -90 -186 -107 -186 -4 0 -31 78 -60 173 l-53 172 50 147 c54 157 55 184 12 207 -53 29 -90 2 -117 -83 -10 -31 -21 -56 -24 -56 -4 0 -20 30 -35 68 -53 127 -177 367 -268 521 -132 221 -167 252 -222 196 -33 -33 -31 -61 9 -120 52 -78 117 -187 114 -190 -2 -2 -32 3 -68 10 -36 8 -80 14 -98 15 -64 0 -95 -68 -49 -114 18 -17 54 -29 165 -51 l143 -28 50 -98 c122 -244 298 -717 302 -813 2 -40 2 -40 -43 -48 -60 -11 -172 6 -257 37 -69 26 -218 109 -229 127 -4 5 14 31 39 56 163 169 193 387 69 511 -57 57 -124 81 -226 81 -89 0 -160 -19 -256 -67 -41 -21 -78 -39 -81 -41 -14 -6 -149 322 -149 361 0 7 21 21 47 31 67 28 183 108 231 160 148 160 122 339 -61 421 -52 24 -79 29 -171 33 l-108 5 6 60 c4 32 18 101 31 151 79 312 262 537 459 561 97 12 218 -32 307 -112 l38 -34 -92 -92 c-101 -101 -144 -172 -154 -257 -7 -58 15 -125 50 -158 89 -84 279 -86 458 -6 32 14 62 23 67 20 5 -3 29 -51 53 -106 46 -108 51 -115 89 -125 35 -8 80 27 80 62 0 44 -125 315 -154 335 -23 16 -67 6 -142 -31 -167 -83 -342 -97 -360 -27 -15 61 90 195 218 279 64 42 83 68 74 102 -3 12 -46 61 -96 108 -153 146 -312 206 -472 179 -301 -52 -531 -382 -594 -852 -18 -137 -18 -153 5 -181 18 -22 24 -23 172 -24 139 0 158 -2 195 -22 54 -29 71 -67 51 -115 -33 -79 -150 -172 -287 -227 -87 -35 -104 -52 -95 -101 15 -79 91 -293 145 -408 60 -125 103 -182 138 -182 11 0 42 18 68 40 27 23 83 58 123 78 63 31 87 38 152 40 89 5 128 -11 160 -61 26 -42 22 -115 -11 -183 -24 -49 -114 -147 -179 -195 -42 -31 -47 -76 -11 -114 71 -76 278 -190 417 -230 89 -26 241 -36 305 -20 23 6 27 3 32 -22 13 -61 36 -207 36 -224 0 -18 -13 -19 -267 -20 -425 -1 -609 -11 -665 -36 -68 -31 -131 -94 -161 -161 -53 -117 -58 -338 -11 -475 23 -68 99 -148 172 -180 l60 -27 6 -108 c16 -246 54 -453 120 -635 55 -155 114 -231 221 -285 84 -42 117 -43 1085 -40 l925 3 56 23 c118 48 187 124 244 270 68 178 108 372 127 620 l12 152 56 26 c118 53 181 152 200 315 17 145 -4 288 -54 372 -33 56 -70 90 -136 123 -52 26 -66 28 -230 35 -96 4 -309 8 -472 8 -163 1 -299 5 -302 9 -8 14 55 262 67 262 7 0 55 7 107 14 166 26 343 99 516 214 112 75 184 142 184 170 0 14 -35 56 -98 119 -110 109 -142 164 -142 241 0 58 18 85 73 113 23 12 50 28 60 37 39 34 6 112 -48 112 -70 0 -162 -67 -201 -146 -24 -49 -26 -63 -22 -134 6 -101 46 -185 129 -275 l60 -63 -36 -30 c-55 -44 -203 -126 -302 -166 -89 -35 -226 -66 -239 -53 -10 10 57 228 76 247 8 8 61 26 118 39 57 14 111 33 122 43 41 38 12 118 -42 118 -13 0 -48 -7 -78 -15 -30 -8 -56 -12 -59 -10 -12 12 170 428 316 724 115 234 118 248 60 281 -48 27 -72 3 -158 -158 l-76 -143 -44 127 c-23 69 -50 136 -59 147 -35 42 -120 13 -120 -42 0 -9 29 -104 65 -211 39 -114 64 -205 61 -220 -2 -14 -32 -90 -66 -170 -85 -199 -163 -405 -225 -595 -59 -182 -52 -176 -153 -127 -109 53 -184 172 -204 325 -6 48 -9 89 -6 92 3 4 42 1 86 -5 146 -20 271 20 329 103 25 35 28 49 28 116 0 64 -5 86 -29 135 -34 70 -143 184 -228 240 -32 20 -58 39 -58 42 0 9 87 217 127 304 38 80 177 336 192 352 4 4 42 -10 86 -32 191 -96 393 -92 478 10 69 82 40 224 -68 334 -46 46 -127 108 -158 119 -16 6 103 127 184 188 167 124 339 155 475 86 77 -39 166 -141 218 -250 162 -335 133 -825 -74 -1263 -28 -59 -52 -109 -54 -112 -2 -2 -40 9 -84 23 -71 25 -82 26 -107 14 -16 -8 -33 -27 -38 -43 -14 -44 14 -73 103 -106 41 -15 94 -36 118 -45 42 -18 43 -18 70 2 68 50 224 430 272 662 110 540 -24 1034 -332 1228 -98 62 -238 85 -354 59z m-500 -3176 l580 -9 45 -24 c85 -43 112 -109 112 -273 1 -167 -28 -232 -121 -279 -53 -27 -1172 -42 -2077 -28 -658 10 -680 11 -720 31 -93 48 -118 119 -111 308 6 160 31 211 123 250 66 27 1183 40 2169 24z m471 -790 c-2 -19 -7 -78 -10 -131 -7 -120 -35 -281 -74 -419 -54 -192 -86 -248 -172 -295 l-54 -30 -940 0 -940 0 -54 30 c-29 16 -65 44 -78 62 -77 101 -158 431 -178 728 l-6 90 1255 0 1255 0 -4 -35z"/>
+</g>
+</svg>
+                        {{ link.title | escape }}
+                        {% render 'icon-arrow' %}
+                        {% render 'icon-caret' %}
+                      </summary>
+                      <div
+                        id="link-{{ link.handle | escape }}"
+                        class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                        tabindex="-1"
+                      >
+                        <div class="menu-drawer__inner-submenu">
+                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                            {% render 'icon-arrow' %}
+                            {{ link.title | escape }}
+                          </button>
+                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            {%- for childlink in link.links -%}
+                              <li>
+                                {%- if childlink.links == blank -%}
+                                  <a
+                                    id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                    href="{{ childlink.url }}"
+                                    class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                    {% if childlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                     <img src="{{ 'plant-icon.png' | asset_url }}" width="50">
+                                    {{ childlink.title | escape }}
+                                  </a>
+                                {%- else -%}
+                                  <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
+                                    <summary
+                                      id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                      class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
+                                    >
+                                      {{ childlink.title | escape }}
+                                      {% render 'icon-arrow' %}
+                                      {% render 'icon-caret' %}
+                                    </summary>
+                                    <div
+                                      id="childlink-{{ childlink.handle | escape }}"
+                                      class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                                    >
+                                      <button
+                                        class="menu-drawer__close-button link link--text focus-inset"
+                                        aria-expanded="true"
+                                      >
+                                        {% render 'icon-arrow' %}
+                                        {{ childlink.title | escape }}
+                                      </button>
+                                      <ul
+                                        class="menu-drawer__menu list-menu"
+                                        role="list"
+                                        tabindex="-1"
+                                      >
+                                        {%- for grandchildlink in childlink.links -%}
+                                          <li>
+                                            <a
+                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                              href="{{ grandchildlink.url }}"
+                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                              {% if grandchildlink.current %}
+                                                aria-current="page"
+                                              {% endif %}
+                                            >
+                                              {{ grandchildlink.title | escape }}
+                                            </a>
+                                          </li>
+                                        {%- endfor -%}
+                                      </ul>
+                                    </div>
+                                  </details>
+                                {%- endif -%}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      </div>
+                    </details>
+                  {%- else -%}
+                    <a
+                      id="HeaderDrawer-{{ link.handle }}"
+                      href="{{ link.url }}"
+                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
+                      {% if link.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{ link.title | escape }}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+          <div class="menu-drawer__utility-links">
+            {%- if shop.customer_accounts_enabled -%}
+              <a
+                href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                class="menu-drawer__account link focus-inset h5 medium-hide large-up-hide"
+              >
+                {% render 'icon-account' %}
+                {%- liquid
+                  if customer
+                    echo 'customer.account_fallback' | t
+                  else
+                    echo 'customer.log_in' | t
+                  endif
+                -%}
+              </a>
+            {%- endif -%}
+            {%- if localization.available_countries or localization.available_languages -%}
+              <div class="menu-drawer__localization header-localization">
+                {%- if localization.available_countries and localization.available_countries.size > 1 -%}
+                  <noscript>
+                    {%- form 'localization', id: 'HeaderCountryMobileFormNoScriptDrawer', class: 'localization-form' -%}
+                      <div class="localization-form__select">
+                        <h2 class="visually-hidden" id="HeaderCountryMobileLabelNoScriptDrawer">
+                          {{ 'localization.country_label' | t }}
+                        </h2>
+                        <select
+                          class="localization-selector link"
+                          name="country_code"
+                          aria-labelledby="HeaderCountryMobileLabelNoScriptDrawer"
+                        >
+                          {%- for country in localization.available_countries -%}
+                            <option
+                              value="{{ country.iso_code }}"
+                              {%- if country.iso_code == localization.country.iso_code %}
+                                selected
+                              {% endif %}
+                            >
+                              {{ country.name }} ({{ country.currency.iso_code }}
+                              {{ country.currency.symbol }})
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                        {% render 'icon-caret' %}
+                      </div>
+                      <button class="button button--tertiary">{{ 'localization.update_country' | t }}</button>
+                    {%- endform -%}
+                  </noscript>
+
+                  <localization-form class="no-js-hidden">
+                    {%- form 'localization', id: 'HeaderCountryMobileForm', class: 'localization-form' -%}
+                      <div>
+                        <h2 class="visually-hidden" id="HeaderCountryMobileLabel">
+                          {{ 'localization.country_label' | t }}
+                        </h2>
+                        {%- render 'country-localization', localPosition: 'HeaderCountryMobile' -%}
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {% endif %}
+
+                {%- if localization.available_languages and localization.available_languages.size > 1 -%}
+                  <noscript>
+                    {%- form 'localization',
+                      id: 'HeaderLanguageMobileFormNoScriptDrawer',
+                      class: 'localization-form'
+                    -%}
+                      <div class="localization-form__select">
+                        <h2 class="visually-hidden" id="HeaderLanguageMobileLabelNoScriptDrawer">
+                          {{ 'localization.language_label' | t }}
+                        </h2>
+                        <select
+                          class="localization-selector link"
+                          name="locale_code"
+                          aria-labelledby="HeaderLanguageMobileLabelNoScriptDrawer"
+                        >
+                          {%- for language in localization.available_languages -%}
+                            <option
+                              value="{{ language.iso_code }}"
+                              lang="{{ language.iso_code }}"
+                              {%- if language.iso_code == localization.language.iso_code %}
+                                selected
+                              {% endif %}
+                            >
+                              {{ language.endonym_name | capitalize }}
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                        {% render 'icon-caret' %}
+                      </div>
+                      <button class="button button--tertiary">{{ 'localization.update_language' | t }}</button>
+                    {%- endform -%}
+                  </noscript>
+
+                  <localization-form class="no-js-hidden">
+                    {%- form 'localization', id: 'HeaderLanguageMobileForm', class: 'localization-form' -%}
+                      <div>
+                        <h2 class="visually-hidden" id="HeaderLanguageMobileLabel">
+                          {{ 'localization.language_label' | t }}
+                        </h2>
+                        {%- render 'language-localization', localPosition: 'HeaderLanguageMobile' -%}
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+            <ul class="list list-social list-unstyled" role="list">
+              {%- if settings.social_twitter_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
+                    {%- render 'icon-twitter' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_facebook_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
+                    {%- render 'icon-facebook' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_pinterest_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
+                    {%- render 'icon-pinterest' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_instagram_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
+                    {%- render 'icon-instagram' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_tiktok_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
+                    {%- render 'icon-tiktok' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_tumblr_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
+                    {%- render 'icon-tumblr' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_snapchat_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
+                    {%- render 'icon-snapchat' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_youtube_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
+                    {%- render 'icon-youtube' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_vimeo_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
+                    {%- render 'icon-vimeo' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</header-drawer>
